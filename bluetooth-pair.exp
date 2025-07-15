@@ -1,0 +1,37 @@
+#!/usr/bin/expect -f
+
+set timeout 120
+set device [lindex $argv 0]
+
+spawn bluetoothctl
+expect "]>"
+
+send "scan on\n"
+expect {
+    "Device $device" {
+        send "pair $device\n"
+        expect "yes/no" { send "yes\n" }
+        expect "]>"
+
+        sleep 1
+
+        send "trust $device\n"
+        expect "]>"
+    }
+    timeout {
+        puts "ERROR: Pairing failed."
+        send "scan off\n"
+        expect "]>"
+        send "quit\n"
+        expect eof
+        exit 1
+    }
+}
+
+send "scan off\n"
+expect "]>"
+
+send "quit\n"
+expect eof
+exit 0
+
