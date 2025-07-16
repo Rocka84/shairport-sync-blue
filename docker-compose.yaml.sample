@@ -1,6 +1,6 @@
 services:
   shairport-sync:
-    image: rocka84/shairport-sync-blue:latest
+    image: ghcr.io/rocka84/shairport-sync-blue:latest
     container_name: shairport-sync-blue
     privileged: true
     restart: on-failure
@@ -8,7 +8,7 @@ services:
       - /dev/snd:/dev/snd
       - /dev/bus/usb:/dev/bus/usb
       - ./bluetooth-data:/var/lib/bluetooth
-      # - /home/pi/shairport-sync-blue/shairport-sync.conf:/etc/shairport-sync.conf
+      # - ./shairport-sync.conf:/etc/shairport-sync.conf
     network_mode: "host"
     environment:
       BLUETOOTH_SPEAKER: "00:00:00:00:00:00"
