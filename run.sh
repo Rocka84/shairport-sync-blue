@@ -24,6 +24,7 @@ if [ -n "$BLUETOOTH_SPEAKER" ]; then
     sleep 3
 
     echo "Starting PulseAudio..."
+    rm -rf /run/user/$(id -u pulseaudio)/pulse /var/run/pulse/*
     su -s /bin/sh pulseaudio -c '/usr/bin/pulseaudio --exit-idle-time=-1 --daemonize=yes --disallow-exit=yes --log-target=stderr' &
     sleep 5
 
