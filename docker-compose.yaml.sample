@@ -1,6 +1,6 @@
 services:
   shairport-sync:
-    image: ghcr.io/rocka84/shairport-sync-blue:latest
+    image: ghcr.io/rocka84/shairport-sync-blue:1.0
     container_name: shairport-sync-blue
     privileged: true
     restart: on-failure
