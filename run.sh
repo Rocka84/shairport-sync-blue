@@ -21,10 +21,10 @@ params=""
 if [ -n "$BLUETOOTH_SPEAKER" ]; then
     echo "Starting Bluetooth daemon..."
     /usr/lib/bluetooth/bluetoothd --debug &
-    sleep 3
+    sleep 5
 
     echo "Starting PulseAudio..."
-    rm -rf /run/user/$(id -u pulseaudio)/pulse /var/run/pulse/*
+    rm -rf /run/user/$(id -u pulseaudio)/pulse /var/run/pulse/* /tmp/pulse-*
     su -s /bin/sh pulseaudio -c '/usr/bin/pulseaudio --exit-idle-time=-1 --daemonize=yes --disallow-exit=yes --log-target=stderr' &
     sleep 5
 
