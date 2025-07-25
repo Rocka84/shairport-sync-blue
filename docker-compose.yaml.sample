@@ -1,13 +1,14 @@
 services:
   shairport-sync:
-    image: ghcr.io/rocka84/shairport-sync-blue:1.0.1
+    image: ghcr.io/rocka84/shairport-sync-blue:2.0.0
     container_name: shairport-sync-blue
     privileged: true
     restart: on-failure
     volumes:
       - /dev/snd:/dev/snd
       - /dev/bus/usb:/dev/bus/usb
-      - ./bluetooth-data:/var/lib/bluetooth
+      - /var/run/dbus:/var/run/dbus
+      - /var/lib/bluetooth:/var/lib/bluetooth
       # - ./shairport-sync.conf:/etc/shairport-sync.conf
     network_mode: "host"
     environment:
