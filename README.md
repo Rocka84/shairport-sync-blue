@@ -6,7 +6,6 @@ Docker container combining bluetooth capabilities with shaireport-sync.
 
 * shairport-sync: 4.3.7
 * pulseaudio: 17.0
-* bluetoothd: 5.82
 
 ## Usage
 
